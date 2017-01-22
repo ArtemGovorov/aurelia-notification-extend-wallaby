@@ -83,8 +83,6 @@ module.exports = function (wallaby) {
                     packageJson.main = packageJson.main.split('/');
                     packageJson.main.pop();
                     modulePath = 'node_modules/' + moduleName + '/' + packageJson.main.join('/');
-                    console.log("--->" + moduleMain);
-                    console.log("--->" + modulePath);
                 }
             }
             return prev
