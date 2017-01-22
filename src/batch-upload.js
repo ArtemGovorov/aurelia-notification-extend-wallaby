@@ -5,7 +5,7 @@ import {SupplierService} from "./services/supplier-service";
 import {RequestStatusService} from "./services/request-status-service";
 import Campaign from "./models/campaign";
 import Supplier from "./models/supplier";
-//import {Notification} from "aurelia-notification";
+import {Notification} from "aurelia-notification";
 
 @inject(BatchService, CampaignService, SupplierService, RequestStatusService, Notification)
 export class BatchUpload {
