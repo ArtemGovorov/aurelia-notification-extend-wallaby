@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>Aurelia</title>
+    <meta name="author" content="CodeNamed">
+    <link rel="stylesheet" href="/styles/styles.css"/>
+</head>
+<style>
+    .splash {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .splash .message {
+        position: fixed;
+        text-align: center;
+        top: 25%;
+    }
+</style>
+
+<body aurelia-app="main">
+    <div class="splash">
+        <div class="message">24seven Leads Manager</div>
+        <div class="fa fa-spinner fa-spin"></div>
+    </div>
+    <script src="scripts/vendor-bundle.js" data-main="aurelia-bootstrapper"></script>
+</body>
+</html>

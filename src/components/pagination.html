@@ -1,0 +1,36 @@
+﻿<template>
+    <!--<require from="../converters"></require>-->
+    <nav>
+        <ul class="pagination" if.bind="numberOfPages <= 10">
+            <li if.bind="currentPage > 1"><a href="" click.delegate="getPage(currentPage-1, filter)"><span aria-hidden="true">&laquo;</span><span class="sr-only">Vorige</span></a></li>
+            <li repeat.for="page of pages" class="${$parent.currentPage === page ? 'active' : ''}"><a href="" click.delegate="$parent.getPage(page, filter)">${page}</a></li>
+            <li if.bind="currentPage < numberOfPages"><a href="" click.delegate="getPage(currentPage+1, filter)"><span aria-hidden="true">&raquo;</span><span class="sr-only">Volgende</span></a></li>
+        </ul>
+
+        <ul class="pagination" if.bind="numberOfPages > 10">
+            <li if.bind="currentPage > 1"><a href="" click.delegate="getPage(1, filter)"><span>Eerste</span></a></li>
+            <li if.bind="currentPage > 1"><a href="" click.delegate="getPage(currentPage-1, filter)"><span aria-hidden="true">&laquo;</span><span class="sr-only">Vorige</span></a></li>
+
+            <li if.bind="currentPage > 6" class="disabled"><a>...</a></li>
+
+            <li if.bind="currentPage > 1 && currentPage < numberOfPages - 4" repeat.for="page of pages | skip: (currentPage > 5 ? currentPage - 6 : 0) | take: (currentPage > 6 ? 5 : currentPage - 1)">
+                <a href="" click.delegate="$parent.getPage(page, filter)">${page}</a>
+            </li>
+            <li if.bind="currentPage > 1 && numberOfPages > currentPage && currentPage >= (numberOfPages - 4)" repeat.for="page of pages | skip: currentPage - (10 - (numberOfPages - currentPage))  | take: 9 - (numberOfPages - currentPage)">
+                <a href="" click.delegate="$parent.getPage(page, filter)">${page}</a>
+            </li>
+            <li if.bind="currentPage === numberOfPages" repeat.for="page of pages | skip: numberOfPages - 10 | take: 9">
+                <a href="" click.delegate="$parent.getPage(page, filter)">${page}</a>
+            </li>
+            <li class="active"><a>${currentPage}</a></li>
+            <li repeat.for="page of pages | skip: currentPage | take: (currentPage <= 6) ? 10 - currentPage : 4">
+                <a href="" click.delegate="$parent.getPage(page)">${page}</a>
+            </li>
+
+            <li if.bind="currentPage < (numberOfPages - 5)" class="disabled"><a>...</a></li>
+
+            <li if.bind="currentPage < numberOfPages"><a href="" click.delegate="getPage(currentPage+1, filter)"><span aria-hidden="true">&raquo;</span><span class="sr-only">Volgende</span></a></li>
+            <li if.bind="currentPage < numberOfPages"><a href="" click.delegate="getPage(numberOfPages, filter)"><span>Laatste</span></a></li>
+        </ul>
+    </nav>
+</template>

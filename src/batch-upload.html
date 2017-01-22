@@ -1,0 +1,51 @@
+<template>
+    <section class="au-animate">
+        <h2>${heading}</h2>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <form submit.delegate="upload()">
+                    <section>
+                        <div class="form-group">
+                            <label>Campaign</label>
+                            <div class="input-group">
+                                <select value.bind="selectedCampaignId" class="form-control">
+                                    <option value=""> -- none -- </option>
+                                    <option repeat.for="campaign of campaigns" model.bind="campaign.id">${campaign.name}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Supplier</label>
+                            <div class="input-group">
+                                <select value.bind="selectedSupplierId" class="form-control">
+                                    <option value=""> -- none -- </option>
+                                    <option repeat.for="supplier of suppliers" model.bind="supplier.id">${supplier.name}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="files" class="col-sm-2 btn btn-default" >Batch file</label>
+                            <div class="input-group">
+                                <div class="col-sm-7">
+                                    <div class="input-group">
+                                        <input id="files" type="file" accept=".xlsx" files.bind="selectedFiles" class="form-control" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="box-footer borderized">
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <div class="input-group">
+                                    <input type="submit" class="btn btn-primary" value="Upload" if.bind="canUpload" disabled.bind="requestStatus.isRequesting" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </section>
+</template>

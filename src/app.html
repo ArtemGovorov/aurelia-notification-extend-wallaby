@@ -1,0 +1,13 @@
+<template>
+    <require from="nav-bar.html"></require>
+    <require from="bootstrap/css/bootstrap.css"></require>
+    <require from="humane-js/themes/jackedup.css"></require>
+    <require from="nprogress/nprogress.css"></require>
+    
+    <loading-indicator loading.bind="router.isNavigating || requestStatusService.isRequesting"></loading-indicator>
+    <nav-bar router.bind="router" auth.bind="auth"></nav-bar>
+
+    <div class="page-host">
+        <router-view></router-view>
+    </div>
+</template>
