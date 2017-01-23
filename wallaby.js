@@ -13,6 +13,7 @@ module.exports = function (wallaby) {
         files: [
             { pattern: "node_modules/bluebird/js/browser/bluebird.core.js", instrument: false },
             { pattern: "node_modules/requirejs/require.js", instrument: false },
+            { pattern: "node_modules/extend/index.js", load: false },
             { pattern: "src/**/*.js", load: false },
             { pattern: "test/stubs/**/*.js", load: false },
             { pattern: "test/unit/setup.js", load: false },
@@ -42,6 +43,8 @@ module.exports = function (wallaby) {
         },
 
         middleware: function (app, express) {
+            app.use("/node_modules/extend//index.js",
+              express.static(path.join(__dirname, "node_modules")));
             app.use("/node_modules",
               express.static(path.join(__dirname, "node_modules")));
         },
